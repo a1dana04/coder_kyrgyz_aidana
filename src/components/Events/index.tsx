@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import EventsList from "./EventsList";
 import useFetch from "../../hooks/useFetch";
+import loading1 from "../../components/assets/img/loiding.svg";
 
 const Events = () => {
 
@@ -14,7 +15,9 @@ const Events = () => {
   console.log(data, 'events');
   
   if (loading) {
-    return <div>Loading</div>;
+    return <div className='loading'style={{
+      display:'flex',alignItems:'center',justifyContent:"center"
+  }}><img src={loading1} alt="img" /></div>;
   }
   
   return (

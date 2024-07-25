@@ -2,10 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { VacancyList } from "./VacancyList";
+import loading1 from "../../components/assets/img/loiding.svg";
 
 const Vacancies = () => {
   const {data,loading} = useFetch()
   console.log(data, loading);
+
+  if (loading) {
+    return <div className='loading'style={{
+      display:'flex',alignItems:'center',justifyContent:"center"
+  }}><img src={loading1} alt="img" /></div>;
+  }
   
   return (
     <div id="vacancy">
