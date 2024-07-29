@@ -33,6 +33,18 @@
                         justify-content: center;
                     }
                 }
+                &--facebook {
+                    background: #3b5998;
+                }
+                &--youtube {
+                   background: red;
+                }
+                &--github {
+                    background: #262626;
+                }
+                &--websites {
+                    background: #6fcf97;
+                }
             }
         }
     }
