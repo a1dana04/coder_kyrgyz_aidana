@@ -8,19 +8,27 @@ import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import VideoList from "./VideoList";
 import loading1 from "../../components/assets/img/loiding.svg";
+import { ResourceItem3 } from "../Types";
+import { CONSTANTS } from "../../constants/intex";
 
 const Video = () => {
-  const meetups_url = "http://3.38.98.134/meetups";
-
   const { data, loading } = useFetch({
-    url: meetups_url,
+    url: `${CONSTANTS}/meetups`,
   });
-  console.log(data, "meetups");
 
   if (loading) {
-    return <div className='loading'style={{
-      display:'flex',alignItems:'center',justifyContent:"center"
-  }}><img src={loading1} alt="img" /></div>;
+    return (
+      <div
+        className="loading"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <img src={loading1} alt="img" />
+      </div>
+    );
   }
   return (
     <div id="video">
@@ -34,7 +42,7 @@ const Video = () => {
         </div>
         <div className="video-card">
           {data &&
-            data.map((el: any, index: number) => {
+            data.map((el: ResourceItem3, index: number) => {
               return (
                 <VideoList
                   key={index}
