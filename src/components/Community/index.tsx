@@ -2,9 +2,10 @@ import CommunityList from  './CommList';
 import useFetch from "../../hooks/useFetch";
 
 import loading1 from "../../components/assets/img/loiding.svg";
+import { CONSTANTS } from '../../constants/intex';
 
 const Community = () => {
-  const { data, loading } = useFetch({ url: "http://3.38.98.134/community" }); 
+  const { data, loading } = useFetch({ url: `${CONSTANTS}/community` }); 
 
   if (loading) {
     return <div className='loading'style={{

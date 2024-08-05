@@ -1,20 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ResourceItem4 } from "../Types";
 
-const OrganizationsList = ({
-  name = "",
-  icon = "",
+const OrganizationsList:React.FC<ResourceItem4> = ({
+  name ,
+  icon ,
 
-  events_count = 0,
-  jobs_count = 0,
-  meetups_count = 0,
-}: {
-  name: string;
-  icon: string;
+  events_count,
+  jobs_count ,
+  meetups_count,
 
-  events_count: number;
-  jobs_count: number;
-  meetups_count: number;
 }) => {
   return (
     <div className="bloc2">

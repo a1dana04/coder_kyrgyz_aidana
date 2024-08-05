@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import loading1 from "../../components/assets/img/loiding.svg"
 import OrganizationsList from './OrganizationsList';
+import { ResourceItem4 } from '../Types';
+import { CONSTANTS } from '../../constants/intex';
 
 const  Organizations = () => {
-    const organization_url = "http://3.38.98.134/organizations"
     const  { data, loading } = useFetch({
-        url:organization_url
+        url: `${CONSTANTS}/organizations`
       })
-      console.log(data, 'organization');
       
       if (loading) {
         return <div className='loading'style={{
@@ -20,7 +20,7 @@ const  Organizations = () => {
         <div id='organizations'>
             <div className="organizations">
             {data &&
-                  data.map((el: any, index: number) => {
+                  data.map((el: ResourceItem4, index: number) => {
                     return (
                       <OrganizationsList
                         key={index}
