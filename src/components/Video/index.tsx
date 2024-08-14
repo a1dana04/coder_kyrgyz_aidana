@@ -11,7 +11,7 @@ import loading1 from "../../components/assets/img/loiding.svg";
 import { ResourceItem3 } from "../Types";
 import { CONSTANTS } from "../../constants/intex";
 
-const Video = () => {
+const Video = ({count =-1}) => {
   const { data, loading } = useFetch({
     url: `${CONSTANTS}/meetups`,
   });
@@ -42,7 +42,7 @@ const Video = () => {
         </div>
         <div className="video-card">
           {data &&
-            data.map((el: ResourceItem3, index: number) => {
+            data.slice(0,count).map((el: ResourceItem3, index: number) => {
               return (
                 <VideoList
                   key={index}

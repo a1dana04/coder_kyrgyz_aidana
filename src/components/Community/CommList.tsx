@@ -1,4 +1,4 @@
-import { FaTelegramPlane } from "react-icons/fa";
+import { FaTelegramPlane} from "react-icons/fa";
 import { SiWebmoney } from "react-icons/si";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
@@ -19,6 +19,8 @@ const CommunityList = ({ data }: CommunityListProps) => {
   const youtube = data?.[0]?.youtube || [];
   const github = data?.[0]?.github || [];
 
+
+  
   return (
     <>
       <div className="community--telegram">

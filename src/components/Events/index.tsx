@@ -6,8 +6,13 @@ import loading1 from "../../components/assets/img/loiding.svg";
 import { ResourceItem2 } from "../Types";
 import { CONSTANTS } from "../../constants/intex";
 
-const Events = () => {
-  const { data, loading } = useFetch({
+const Events = (
+  { count = -1 }
+) => {
+  
+  const { data, loading } = useFetch(
+    
+    {
     url: `${CONSTANTS}/events`,
   });
 
@@ -33,7 +38,7 @@ const Events = () => {
           <button>Добавить мероприятиe</button>
         </div>
         {data &&
-          data.map((el: ResourceItem2, index: number) => {
+          data.slice(0,count).map((el: ResourceItem2, index: number) => {
             return (
               <EventsList
                 key={index}
