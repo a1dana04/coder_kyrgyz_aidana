@@ -1,25 +1,19 @@
+// src/components/Vacancies/VacancyList.tsx
+import React from "react";
 import { Link } from "react-router-dom";
+import { ResourceItemm } from "../Types/Vacanciess";
 
-export const VacancyList = ({
-  companyName = "",
-  jobTitle = "",
-  paymentType = "",
-  priceFrom = 0,
-  priceTo = 0,
-  type = "",
-  city = "",
-  currency = "",
-  salary = "",
-}: {
-  companyName: string;
-  jobTitle: string;
-  paymentType: string;
-  priceFrom: number;
-  priceTo: number;
-  type: string;
-  city: string;
-  currency: string;
-  salary: string;
+
+export const VacancyList: React.FC<ResourceItemm> = ({
+  companyName,
+  jobTitle,
+  paymentType,
+  priceFrom,
+  priceTo,
+  type,
+  city,
+  currency,
+  salary,
 }) => {
   return (
     <div className="cards">
@@ -27,7 +21,7 @@ export const VacancyList = ({
         <div className="blocks">
           <div className="company">
             <p>Компания</p>
-            <h3> {companyName}</h3>
+            <h3>{companyName}</h3>
           </div>
           <div className="dol">
             <p>Должность</p>
