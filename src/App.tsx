@@ -19,6 +19,8 @@ import Auth from './components/Auth';
 import AddVacan from './components/AddVacan';
 
 function App() {
+  
+  
   return (
     <div className="App">
         <Header/>

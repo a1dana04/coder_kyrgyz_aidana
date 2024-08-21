@@ -4,7 +4,7 @@ import EventsList from "./EventsList";
 import useFetch from "../../hooks/useFetch";
 import loading1 from "../../components/assets/img/loiding.svg";
 import { ResourceItem2 } from "../Types";
-import { CONSTANTS } from "../../constants/intex";
+import { API} from "../../constants/intex";
 
 const Events = (
   { count = -1 }
@@ -13,7 +13,7 @@ const Events = (
   const { data, loading } = useFetch(
     
     {
-    url: `${CONSTANTS}/events`,
+    url: `${API}/events`,
   });
 
   if (loading) {
