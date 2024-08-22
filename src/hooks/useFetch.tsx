@@ -1,11 +1,11 @@
 import { log } from "console";
 import { useEffect, useState } from "react";
 import { FaLess } from "react-icons/fa";
-import { CONSTANTS } from "../constants/intex";
+import { API } from "../constants/intex"
 
 const useFetch = (
   { url } = {
-    url: `${CONSTANTS}/jobs`,
+    url: `${API}/jobs`,
   }
 ) => {
   const [data, setData] = useState<any>([]);
@@ -14,8 +14,7 @@ const useFetch = (
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await fetch(url);
-      const data = await response.json();
+      const response = await fetch(url); const data = await response.json();
       if (data.statusCode === 200) {
         console.log(data);
 

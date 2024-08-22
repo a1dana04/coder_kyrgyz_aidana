@@ -4,7 +4,8 @@ import EventsList from "./EventsList";
 import useFetch from "../../hooks/useFetch";
 import loading1 from "../../components/assets/img/loiding.svg";
 import { ResourceItem2 } from "../Types";
-import { CONSTANTS } from "../../constants/intex";
+import { API } from "../../constants/intex";
+
 
 const Events = (
   { count = -1 }
@@ -13,7 +14,7 @@ const Events = (
   const { data, loading } = useFetch(
     
     {
-    url: `${CONSTANTS}/events`,
+    url: `${API}/events`,
   });
 
   if (loading) {
@@ -35,7 +36,7 @@ const Events = (
     <div id="events">
       <div className="container">
         <div className="btn1">
-          <button>Добавить мероприятиe</button>
+       <Link to={"/addEvents"}>   <button>Добавить мероприятиe</button></Link>
         </div>
         {data &&
           data.slice(0,count).map((el: ResourceItem2, index: number) => {

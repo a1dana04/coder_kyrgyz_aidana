@@ -4,11 +4,11 @@ import useFetch from '../../hooks/useFetch';
 import loading1 from "../../components/assets/img/loiding.svg"
 import OrganizationsList from './OrganizationsList';
 import { ResourceItem4 } from '../Types';
-import { CONSTANTS } from '../../constants/intex';
+import { API } from '../../constants/intex';
 
 const  Organizations = () => {
     const  { data, loading } = useFetch({
-        url: `${CONSTANTS}/organizations`
+        url: `${API}/organizations`
       })
       
       if (loading) {
