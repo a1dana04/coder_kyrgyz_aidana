@@ -38,6 +38,17 @@ const AddVacan = () => {
 
             if (response.data.success) {
                 console.log(response.data);
+
+                setNameVacancy("")
+                setPriceFrom("")
+                setSalarylVacancy("")
+                setNameCompany("")
+                setPriceTo("")
+                setAddress("")
+                setPhone("")
+                setEmail("")
+
+
             }
             alert(response.data.message);
         } catch (error) {

@@ -17,6 +17,7 @@ import DetalMerop from './components/DetalMerop';
 import DetailVacancy from './components/DetailVacancy';
 import Auth from './components/Auth';
 import AddVacan from './components/AddVacan';
+import AddEvents from './components/AddEvents';
 
 function App() {
   
@@ -39,6 +40,7 @@ function App() {
           <Route path='/detailvacancy' element={<DetailVacancy/>}/>
           <Route path='/auth' element={<Auth/>}/>
           <Route path='/addVacan' element={<AddVacan/>}/>
+          <Route path='/addEvents' element={<AddEvents/>}/>
         </Routes>
     <Footer/>
   
