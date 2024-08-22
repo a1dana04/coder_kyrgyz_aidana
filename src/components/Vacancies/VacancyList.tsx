@@ -15,6 +15,7 @@ export const VacancyList: React.FC<ResourceItemm> = ({
   currency,
   salary,
 }) => {
+
   return (
     <div className="cards">
       <Link to={"/detailvacancy"}>

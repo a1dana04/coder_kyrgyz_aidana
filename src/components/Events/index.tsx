@@ -6,7 +6,6 @@ import loading1 from "../../components/assets/img/loiding.svg";
 import { ResourceItem2 } from "../Types";
 import { API } from "../../constants/intex";
 
-
 const Events = (
   { count = -1 }
 ) => {

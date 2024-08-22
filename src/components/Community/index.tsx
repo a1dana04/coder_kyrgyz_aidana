@@ -2,7 +2,9 @@ import CommunityList from  './CommList';
 import useFetch from "../../hooks/useFetch";
 
 import loading1 from "../../components/assets/img/loiding.svg";
-import { API } from '../../constants/intex';
+
+import {API } from '../../constants/intex';
+
 
 const Community = () => {
   const { data, loading } = useFetch({ url: `${API}/community` }); 
