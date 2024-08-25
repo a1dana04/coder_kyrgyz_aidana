@@ -18,6 +18,7 @@ import DetailVacancy from './components/DetailVacancy';
 import Auth from './components/Auth';
 import AddVacan from './components/AddVacan';
 import AddEvents from './components/AddEvents';
+import AddVideo from './components/AddVideo';
 
 function App() {
   
@@ -41,6 +42,7 @@ function App() {
           <Route path='/auth' element={<Auth/>}/>
           <Route path='/addVacan' element={<AddVacan/>}/>
           <Route path='/addEvents' element={<AddEvents/>}/>
+          <Route path='/addVideo' element={<AddVideo/>}/>
         </Routes>
     <Footer/>
   

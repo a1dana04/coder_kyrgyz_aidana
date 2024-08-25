@@ -3,17 +3,38 @@ import { API } from '../../constants/intex';
 import axios from 'axios';
 
 const AddVacan = () => {
-    const [nameVacancy, setNameVacancy] = useState("");
-    const [salaryVacancy, setSalarylVacancy] = useState("");
-    const [priceFrom, setPriceFrom] = useState("");
-    const [nameCompany, setNameCompany] = useState("");
-    const [priceTo, setPriceTo] = useState("");
-    const [address, setAddress] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
+    const [vacancyState, setVacancyState] = useState({
+        nameVacancy: "",
+        salaryVacancy: "",
+        priceFrom: "",
+        nameCompany: "",
+        priceTo: "",
+        address: "",
+        phone: "",
+        email: ""
+    });
+
+    const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setVacancyState({
+            ...vacancyState,
+            [name]: value
+        });
+    };
 
     const handleAddVacancy = async (e: React.FormEvent) => {
         e.preventDefault();
+        const {
+            nameVacancy,
+            salaryVacancy,
+            priceFrom,
+            nameCompany,
+            priceTo,
+            address,
+            phone,
+            email
+        } = vacancyState;
+
         try {
             const response = await axios.post(`${API}/jobs`, {
                 organization_name: nameCompany,
@@ -39,20 +60,20 @@ const AddVacan = () => {
             if (response.data.success) {
                 console.log(response.data);
 
-                setNameVacancy("")
-                setPriceFrom("")
-                setSalarylVacancy("")
-                setNameCompany("")
-                setPriceTo("")
-                setAddress("")
-                setPhone("")
-                setEmail("")
-
-
+                setVacancyState({
+                    nameVacancy: "",
+                    salaryVacancy: "",
+                    priceFrom: "",
+                    nameCompany: "",
+                    priceTo: "",
+                    address: "",
+                    phone: "",
+                    email: ""
+                });
             }
+
             alert(response.data.message);
         } catch (error) {
-            console.error("error", error);
             alert("Не удалось добавить вакансию");
         }
     };
@@ -64,16 +85,64 @@ const AddVacan = () => {
                     <h1>Добавить вакансию</h1>
                     <div className="addVacan--input">
                         <div className="addVacan--input__inpt">
-                            <input onChange={(e) => setNameCompany(e.target.value)} value={nameCompany} type="text" placeholder="Название компании" />
-                            <input onChange={(e) => setSalarylVacancy(e.target.value)} value={salaryVacancy} type="text" placeholder="Зарплата" />
-                            <input onChange={(e) => setPriceTo(e.target.value)} value={priceTo} type="text" placeholder='Price to' />
-                            <input onChange={(e) => setPriceFrom(e.target.value)} value={priceFrom} type="text" placeholder="Price from" />
+                            <input
+                                name="nameCompany"
+                                onChange={inputChangeHandler}
+                                value={vacancyState.nameCompany}
+                                type="text"
+                                placeholder="Название компании"
+                            />
+                            <input
+                                name="salaryVacancy"
+                                onChange={inputChangeHandler}
+                                value={vacancyState.salaryVacancy}
+                                type="text"
+                                placeholder="Зарплата"
+                            />
+                            <input
+                                name="priceTo"
+                                onChange={inputChangeHandler}
+                                value={vacancyState.priceTo}
+                                type="text"
+                                placeholder="Price to"
+                            />
+                            <input
+                                name="priceFrom"
+                                onChange={inputChangeHandler}
+                                value={vacancyState.priceFrom}
+                                type="text"
+                                placeholder="Price from"
+                            />
                         </div>
                         <div className="addVacan--input__inpt">
-                            <input onChange={(e) => setNameVacancy(e.target.value)} value={nameVacancy} type="text" placeholder="Тип вакансии" />
-                            <input onChange={(e) => setAddress(e.target.value)} value={address} type="text" placeholder="Адрес" />
-                            <input onChange={(e) => setPhone(e.target.value)} value={phone} type="text" placeholder="Телефон" />
-                            <input onChange={(e) => setEmail(e.target.value)} value={email} type="text" placeholder="Email" />
+                            <input
+                                name="nameVacancy"
+                                onChange={inputChangeHandler}
+                                value={vacancyState.nameVacancy}
+                                type="text"
+                                placeholder="Тип вакансии"
+                            />
+                            <input
+                                name="address"
+                                onChange={inputChangeHandler}
+                                value={vacancyState.address}
+                                type="text"
+                                placeholder="Адрес"
+                            />
+                            <input
+                                name="phone"
+                                onChange={inputChangeHandler}
+                                value={vacancyState.phone}
+                                type="text"
+                                placeholder="Телефон"
+                            />
+                            <input
+                                name="email"
+                                onChange={inputChangeHandler}
+                                value={vacancyState.email}
+                                type="text"
+                                placeholder="Email"
+                            />
                         </div>
                     </div>
                     <button type="submit">Добавить</button>
