@@ -10,7 +10,8 @@ const RouterProtector:React.FC<RouterProtectorProps> = ({children}) => {
     if(isLoggedIn) {
         return <>{children}</>
     }
-    return <Navigate to={'/auth'}/>
+    return <Navigate to={'/auth'}/> 
+   
 }
 
 export default RouterProtector;
