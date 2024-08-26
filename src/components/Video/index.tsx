@@ -36,7 +36,7 @@ const Video = ({count =-1}) => {
     <div id="video">
       <div className="container">
         <div className="btn">
-          <button>Добавить видео</button>
+     <Link to={'/addVideo'}>  <button>Добавить видео</button></Link>
         </div>
 
         <div className="text">
