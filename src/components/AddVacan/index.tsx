@@ -1,155 +1,80 @@
-import React, { useState } from 'react';
-import { API } from '../../constants/intex';
-import axios from 'axios';
+import React from "react";
 
 const AddVacan = () => {
-    const [vacancyState, setVacancyState] = useState({
-        nameVacancy: "",
-        salaryVacancy: "",
-        priceFrom: "",
-        nameCompany: "",
-        priceTo: "",
-        address: "",
-        phone: "",
-        email: ""
-    });
-
-    const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setVacancyState({
-            ...vacancyState,
-            [name]: value
-        });
-    };
-
-    const handleAddVacancy = async (e: React.FormEvent) => {
-        e.preventDefault();
-        const {
-            nameVacancy,
-            salaryVacancy,
-            priceFrom,
-            nameCompany,
-            priceTo,
-            address,
-            phone,
-            email
-        } = vacancyState;
-
-        try {
-            const response = await axios.post(`${API}/jobs`, {
-                organization_name: nameCompany,
-                price_from: Number(priceFrom),
-                price_to: Number(priceTo),
-                currency: 'currency',
-                position: nameVacancy,
-                city: address,
-                salary: salaryVacancy,
-                phone: phone,
-                type: 'type',
-                id: Math.random(),
-                slug: '',
-                created_at: '',
-                updated_at: '',
-                is_archived: true,
-                gradient: 0,
-                workday: '',
-                organization_icon: '',
-                organization_icon_formats: [null]
-            });
-
-            if (response.data.success) {
-                console.log(response.data);
-
-                setVacancyState({
-                    nameVacancy: "",
-                    salaryVacancy: "",
-                    priceFrom: "",
-                    nameCompany: "",
-                    priceTo: "",
-                    address: "",
-                    phone: "",
-                    email: ""
-                });
-            }
-
-            alert(response.data.message);
-        } catch (error) {
-            alert("Не удалось добавить вакансию");
-        }
-    };
-
-    return (
-        <div id='addVacan'>
-            <div className="container">
-                <form className="addVacan" onSubmit={handleAddVacancy}>
-                    <h1>Добавить вакансию</h1>
-                    <div className="addVacan--input">
-                        <div className="addVacan--input__inpt">
-                            <input
-                                name="nameCompany"
-                                onChange={inputChangeHandler}
-                                value={vacancyState.nameCompany}
-                                type="text"
-                                placeholder="Название компании"
-                            />
-                            <input
-                                name="salaryVacancy"
-                                onChange={inputChangeHandler}
-                                value={vacancyState.salaryVacancy}
-                                type="text"
-                                placeholder="Зарплата"
-                            />
-                            <input
-                                name="priceTo"
-                                onChange={inputChangeHandler}
-                                value={vacancyState.priceTo}
-                                type="text"
-                                placeholder="Price to"
-                            />
-                            <input
-                                name="priceFrom"
-                                onChange={inputChangeHandler}
-                                value={vacancyState.priceFrom}
-                                type="text"
-                                placeholder="Price from"
-                            />
-                        </div>
-                        <div className="addVacan--input__inpt">
-                            <input
-                                name="nameVacancy"
-                                onChange={inputChangeHandler}
-                                value={vacancyState.nameVacancy}
-                                type="text"
-                                placeholder="Тип вакансии"
-                            />
-                            <input
-                                name="address"
-                                onChange={inputChangeHandler}
-                                value={vacancyState.address}
-                                type="text"
-                                placeholder="Адрес"
-                            />
-                            <input
-                                name="phone"
-                                onChange={inputChangeHandler}
-                                value={vacancyState.phone}
-                                type="text"
-                                placeholder="Телефон"
-                            />
-                            <input
-                                name="email"
-                                onChange={inputChangeHandler}
-                                value={vacancyState.email}
-                                type="text"
-                                placeholder="Email"
-                            />
-                        </div>
-                    </div>
-                    <button type="submit">Добавить</button>
-                </form>
+  return (
+    <div id="addVacan">
+      <div className="container">
+        <div className="addVacan">
+          <h1>Добавить новую вакансию</h1>
+          <p>
+            Вакансия должна относится к сфере информационных технологий и будет
+            опубликована после проверки модератором
+          </p>
+          <h6>
+            Организация <span>*</span>
+          </h6>
+          <input type="" />
+          <h6>
+            Должность <span>*</span>
+          </h6>
+          <div className="addVacan--inpt">
+            <input type="text" />
+            <div className="addVacan--inpt__text">
+              <p>Например “Junior Go Developer”</p>
             </div>
+          </div>
+          <h6>
+            Описание вакансии<span>*</span>
+          </h6>
+          <div className="addVacan--inpt">
+            <input type="text" />
+            <div className="addvacan--inpt__text">
+              <p>
+                Здесь необходимо указать условия труда, требования и <br />
+                обязанности. Также вы можете указать краткое описание компании,
+                <br />
+                например: “В дружный отдел дизайна игровой студии ”Bloody Fun”
+                требуется проект менеджер со стажем”
+              </p>
+            </div>
+          </div>
+          <h6>Telegram</h6>
+          <div className="addVacan--inpt">
+            <input type="text" />
+            <div className="addVacan--input__text">
+              <p>
+                Не обязательно заполнять все поля для контактов. Например если у
+                <br />
+                вас нет почты или вы не хотите оставлять свой телеграм, оставьте{" "}
+                <br />
+                поле пустым.
+              </p>
+            </div>
+          </div>
+          <h6>Skype</h6>
+          <input type="text" />
+          <h6>E-Mail</h6>
+          <input type="text" />
+          <h6>Телефон</h6>
+          <input type="text" />
+          <h6>Фото</h6>
+          <input type="file" />
+          <h6>
+            Тип<span>*</span>
+          </h6>
+          <select>
+            <option value="Работа в офисе (только Кыргызстан)">Работа в офисе (только Кыргызстан)</option>
+            <option value="saab">Разовая работа (Проект)</option>
+            <option value="opel">Удаленная работа (Remote)</option>
+            <option value="audi">Переезд (Работа за границей)</option>
+            <option value="audi">Стажировка (только Кыргызстан)</option>
+          </select>
+
+          <button>Сохранить</button>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default AddVacan;
