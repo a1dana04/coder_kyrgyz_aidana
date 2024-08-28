@@ -21,7 +21,7 @@ const OrganizationsList:React.FC<ResourceItem4> = ({
                         <h4>видео <span>{meetups_count}</span></h4>
                     </div>
                 </Link>
-                    <div className="image2">:   
+                    <div className="image2">
                     <img data-v-7ad410c8="" src={icon} alt="img"/>
                     </div>
                 </div>  

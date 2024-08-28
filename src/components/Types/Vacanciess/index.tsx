@@ -1,15 +1,12 @@
-
 export interface ResourceItemm {
-  companyName: string;
-    jobTitle: string;
+  organization_name: string;
+  position: string;
     paymentType: string;
-    priceFrom: number;
-    priceTo: number;
+    price_from: number;
+    price_to: number;
     type: string;
     city: string;
     currency: string;
     salary: string;
+    organization_icon:string
   }
-  
-
-  

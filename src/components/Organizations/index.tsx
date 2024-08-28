@@ -14,7 +14,7 @@ const  Organizations = () => {
       if (loading) {
         return <div className='loading'style={{
             display:'flex',alignItems:'center',justifyContent:"center"
-        }}><img src={loading1} alt="img" /></div>;
+        }}><img src={loading1} alt="img" /></div>
       }
     return (
         <div id='organizations'>
@@ -32,7 +32,7 @@ const  Organizations = () => {
                        
                         
                       />
-                    );
+                    )
                   })}
             </div>
            

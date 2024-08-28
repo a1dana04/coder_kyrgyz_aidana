@@ -33,15 +33,16 @@ const Vacancies = ({ count = -1 }) => {
             return (
               <VacancyList
                 key={index}
-                companyName={el.companyName}
-                jobTitle={el.jobTitle}
+                organization_name ={el.organization_name}
+                position={el.position}
                 paymentType={el.paymentType}
-                priceFrom={el.priceFrom}
-                priceTo={el.priceTo}
+                price_from={el.price_from}
+                price_to={el.price_to}
                 type={el.type}
                 city={el.city}
                 currency={el.currency}
                 salary={el.salary}
+                organization_icon={el.organization_icon}
               />
             );
           })}
