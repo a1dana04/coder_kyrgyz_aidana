@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 const AddVacan = () => {
+
+  const [vacancyState, setVacancyState] = useState({
+    
+});
+
   return (
     <div id="addVacan">
       <div className="container">
@@ -57,6 +62,8 @@ const AddVacan = () => {
           <input type="text" />
           <h6>Телефон</h6>
           <input type="text" />
+          <h6>Фото</h6>
+          <input type="file" />
           <h6>Фото</h6>
           <input type="file" />
           <h6>
