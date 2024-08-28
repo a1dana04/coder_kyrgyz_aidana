@@ -1,10 +1,9 @@
 #vacancy {
   .vacancy {
-    // padding: 70px;
     .vac {
       display: flex;
       justify-content: flex-end;
-      // padding: 20px;
+      padding: 20px;
     }
     .btn {
       font-size: 16px;
@@ -15,17 +14,17 @@
       border: none;
     }
     .cards {
-      padding: 6px;
+      padding-bottom: 10px;
     }
     .blocks {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 1030px;
+      width: 1120px;
     
       // text-align:;
       height: 70px;
-      background: rgba(202, 201, 201, 0.459);
+      background: rgba(231, 244, 245, 0.459);
       padding: 15px 15px;
     
     
