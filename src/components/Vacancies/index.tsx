@@ -29,7 +29,8 @@ const Vacancies = ({ count = -1 }) => {
           <div className="vac">
             <button onClick={() => nav("/addVacan")} className="btn">Добавить вакансии</button>
           </div>
-          {data.slice(0, count).map((el: ResourceItemm, index: number) => {
+          {data.sort((a: any, b: any) => b.id - a.id).
+slice(0, count).map((el: ResourceItemm, index: number) => {
             return (
               <VacancyList
                 key={index}
