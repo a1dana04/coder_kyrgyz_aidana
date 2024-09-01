@@ -1,22 +1,25 @@
-
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { VacancyList } from "./VacancyList";
 import loading1 from "../../components/assets/img/loiding.svg";
 
-
 import { ResourceItemm } from "../Types/Vacanciess";
-
-
 
 const Vacancies = ({ count = -1 }) => {
   const nav = useNavigate();
-  const  { data, loading } = useFetch()
+  const { data, loading } = useFetch();
 
   if (loading) {
     return (
-      <div className="loading" style={{ display: 'flex', alignItems: 'center', justifyContent: "center" }}>
+      <div
+        className="loading"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <img src={loading1} alt="img" />
       </div>
     );
@@ -27,14 +30,15 @@ const Vacancies = ({ count = -1 }) => {
       <div className="container">
         <div className="vacancy">
           <div className="vac">
-            <button onClick={() => nav("/addVacan")} className="btn">Добавить вакансии</button>
+            <button onClick={() => nav("/addVacan")} className="btn">
+              Добавить вакансии
+            </button>
           </div>
-          {data.sort((a: any, b: any) => b.id - a.id).
-slice(0, count).map((el: ResourceItemm, index: number) => {
+          {data.slice(0, count).map((el: ResourceItemm, index: number) => {
             return (
               <VacancyList
                 key={index}
-                organization_name ={el.organization_name}
+                organization_name={el.organization_name}
                 position={el.position}
                 paymentType={el.paymentType}
                 price_from={el.price_from}

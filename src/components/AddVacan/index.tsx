@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { API } from "../../constants/intex";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+
+
 
 interface VacancyState {
   nameVacancy: string;
@@ -14,7 +17,7 @@ interface VacancyState {
   phone: string;
   email: string;
   icon: string;
-  desVacancy: string;
+  workday: string;
   skype: string;
   telegram: string;
   vacancyType: string;
@@ -23,6 +26,7 @@ interface VacancyState {
 }
 
 const AddVacan: React.FC = () => {
+    const nav = useNavigate()
   const [vacancyState, setVacancyState] = useState<VacancyState>({
     nameVacancy: "",
     salaryVacancy: "",
@@ -33,7 +37,7 @@ const AddVacan: React.FC = () => {
     phone: "",
     email: "",
     icon: "",
-    desVacancy: "",
+    workday: "",
     skype: "",
     telegram: "",
     vacancyType: "",
@@ -49,12 +53,10 @@ const AddVacan: React.FC = () => {
       ...prevState,
       [name]: value,
     }));
-    console.log(name, value);
   };
 
   const handleAddVacancy = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submit triggered");
 
     const {
       nameVacancy,
@@ -66,7 +68,7 @@ const AddVacan: React.FC = () => {
       phone,
       email,
       icon,
-      desVacancy,
+      workday,
       skype,
       telegram,
       vacancyType,
@@ -75,15 +77,19 @@ const AddVacan: React.FC = () => {
     } = vacancyState;
 
     if (
-      !nameVacancy &&
-      !salaryVacancy &&
-      !priceFrom &&
-      !priceTo &&
-      !nameCompany &&
-      !address &&
-      !phone &&
-      !email &&
-      !desVacancy
+      !nameVacancy || 
+      !salaryVacancy || 
+      !priceFrom || 
+      !priceTo || 
+      !nameCompany ||
+      !currency || 
+      !phone || 
+      !email || 
+      !workday || 
+      !telegram ||
+      !skype || 
+      !icon || 
+        !vacancyType 
     ) {
       toast.error("Пожалуйста, заполните все обязательные поля.");
       return;
@@ -114,6 +120,10 @@ const AddVacan: React.FC = () => {
       });
       if (response.data.success) {
         toast.success(response.data.message);
+
+        setTimeout(() => {
+         nav("/vacancy")
+        }, 2000)
         setVacancyState({
           nameVacancy: "",
           salaryVacancy: "",
@@ -124,7 +134,7 @@ const AddVacan: React.FC = () => {
           phone: "",
           email: "",
           icon: "",
-          desVacancy: "",
+          workday: "",
           skype: "",
           telegram: "",
           vacancyType: "",
@@ -134,8 +144,10 @@ const AddVacan: React.FC = () => {
       } else {
         toast.error(response.data.message || "Не удалось добавить вакансию");
       }
-    } catch (error) {
-      toast.error("Не удалось добавить вакансию");
+    } catch (error:any) {
+      toast.error(error.response.data.message || "Не удалось добавить вакансию");
+  
+      
     }
   };
 
@@ -160,7 +172,6 @@ const AddVacan: React.FC = () => {
             placeholder="Название компании"
           />
 
-    
           <h6>
             Должность <span>*</span>
           </h6>
@@ -177,15 +188,14 @@ const AddVacan: React.FC = () => {
             </div>
           </div>
 
-       
           <h6>
             Описание вакансии<span>*</span>
           </h6>
           <div className="addVacan--inpt">
             <input
-              name="desVacancy"
+              name="workday"
               onChange={inputChangeHandler}
-              value={vacancyState.desVacancy}
+              value={vacancyState.workday}
               type="text"
               placeholder="Описание вакансии"
             />
@@ -199,7 +209,6 @@ const AddVacan: React.FC = () => {
             </div>
           </div>
 
-      
           <h6>Telegram</h6>
           <input
             name="telegram"
@@ -236,7 +245,6 @@ const AddVacan: React.FC = () => {
             placeholder="Телефон"
           />
 
-          
           <h6>Фото</h6>
           <input
             name="icon"
