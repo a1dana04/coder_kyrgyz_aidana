@@ -22,7 +22,7 @@ const useFetch = (
       if (data.statusCode === 200) {
         console.log(data);
 
-        setData(data.data);
+        setData(data.data.sort((a: any, b: any) => b.id - a.id));
       }
     } catch (error) {
       console.log(error);
