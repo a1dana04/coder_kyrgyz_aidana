@@ -27,19 +27,15 @@
     gap: 30px;
     flex-wrap: wrap;
     
-    // flex-wrap: wrap;
+
     .video {
-      // display: flex;
-      // align-items: center;
-      // justify-content: center;
-      // flex-wrap: wrap;
-      // gap: 30px;
+     
   
       &--img1 {
         position: relative;
   
         img {
-          // width: 575px;
+        
           height: 350px;
           opacity: 0.9;
           filter: blur(3px);
@@ -64,8 +60,12 @@
   
             &__kor,
             &__kor2 {
+
               h6 {
                 font-size: 16px;
+              }
+              h2 {
+                width: 250px;
               }
             }
           }

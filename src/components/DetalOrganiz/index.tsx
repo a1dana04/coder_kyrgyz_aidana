@@ -1,6 +1,7 @@
 import React from 'react';
 
 const DetalOrganiz = () => {
+  
     return (
       <>
         <div id="detail">
