@@ -1,38 +1,30 @@
-import { log } from "console";
 import { useEffect, useState } from "react";
-import { FaLess } from "react-icons/fa";
-
 import { API } from "../constants/intex";
+import { useQuery } from "@tanstack/react-query";
 
 const useFetch = (
   { url } = {
     url: `${API}/jobs`,
   }
 ) => {
-  const [data, setData] = useState<any>([]);
-  const [loading, setLoading] = useState(false);
-
-  const fetchData = async () => {
-    setLoading(true);
-    try {
+ 
+  const { data, isLoading } = useQuery({
+    queryKey: [url],
+    queryFn: async () => {
       const response = await fetch(url);
-      const data = await response.json();
-      if (data.statusCode === 200) {
-        console.log(data);
-
-        setData(data.data.sort((a: any, b: any) => b.id - a.id));
+      const result = await response.json();
+      if (result.statusCode === 200) {
+        return result.data.sort((a: any, b: any) => b.id - a.id);
+      } else {
+        throw new Error("Failed to fetch data");
       }
-    } catch (error) {
-    } finally {
-      setLoading(false);
-    }
-  };
+    },
+  });
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  return { data, loading };
+ 
+  return { data, loading: isLoading };
+  
+  
 };
 
 export default useFetch;
