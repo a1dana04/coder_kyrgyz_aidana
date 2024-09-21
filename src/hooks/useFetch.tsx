@@ -16,7 +16,7 @@ const useFetch = (
       if (result.statusCode === 200) {
         return result.data.sort((a: any, b: any) => b.id - a.id);
       } else {
-        throw new Error("Failed to fetch data");
+       return []
       }
     },
   });
