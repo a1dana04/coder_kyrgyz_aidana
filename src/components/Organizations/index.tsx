@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import loading1 from "../../components/assets/img/loiding.svg"
 import OrganizationsList from './OrganizationsList';
 import { ResourceItem4 } from '../Types';
 import { API } from '../../constants/intex';
+import { log } from 'console';
 
 const  Organizations = () => {
     const  { data, loading } = useFetch({
@@ -16,6 +17,9 @@ const  Organizations = () => {
             display:'flex',alignItems:'center',justifyContent:"center"
         }}><img src={loading1} alt="img" /></div>
       }
+
+   
+    
     return (
         <div id='organizations'>
             <div className="organizations">
